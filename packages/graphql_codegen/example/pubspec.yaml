@@ -12,5 +12,5 @@ dependencies:
 dev_dependencies:
   graphql_codegen:
     path: "../"
-  build_runner: ^2.9.0
+  build_runner: ^2.0.3
   test: ^1.17.4

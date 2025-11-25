@@ -84,28 +84,28 @@ void main() {
             : BuilderOptions(
                 jsonDecode(optionsFile.value) as Map<String, dynamic>,
               );
-        final readerWriter = TestReaderWriter(rootPackage: 'a');
+        // final readerWriter = TestReaderWriter(rootPackage: 'a');
         try {
           await testBuilder(
             GraphQLBuilder(options),
             assets,
-            readerWriter: readerWriter,
+            // readerWriter: readerWriter,
             rootPackage: 'a',
             outputs: expectedOutputs,
           );
         } catch (e) {
-          for (final id in readerWriter.testing.assets) {
-            final file = noFlatLib
-                ? id.path
-                : id.path.replaceAll(RegExp("^lib"), "");
-            final contents = readerWriter.testing.readString(id);
-            if (contents != files[file]) {
-              await (await File(
-                "${testSet.absolute.path}/${file}.expected",
-                // "${testSet.absolute.path}/${file}",
-              ).create(recursive: true)).writeAsString(contents);
-            }
-          }
+          // for (final id in readerWriter.testing.assets) {
+          //   final file = noFlatLib
+          //       ? id.path
+          //       : id.path.replaceAll(RegExp("^lib"), "");
+          //   final contents = readerWriter.testing.readString(id);
+          //   if (contents != files[file]) {
+          //     await (await File(
+          //       "${testSet.absolute.path}/${file}.expected",
+          //       // "${testSet.absolute.path}/${file}",
+          //     ).create(recursive: true)).writeAsString(contents);
+          //   }
+          // }
           rethrow;
         }
       });
